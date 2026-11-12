@@ -24,8 +24,8 @@ class DatabaseSeeder extends Seeder
         ]);
 
         \App\Models\User::create([
-            'name' => 'Alex Rivera',
-            'email' => 'alex@example.com',
+            'name' => 'Janki Bhatt',
+            'email' => 'janki@example.com',
             'password' => \Illuminate\Support\Facades\Hash::make('password'),
             'city' => 'Toronto',
             'latitude' => 43.7001,
