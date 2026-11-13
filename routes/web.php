@@ -1,8 +1,8 @@
 <?php
 
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\WeatherController;
 use Illuminate\Support\Facades\Route;
-use Inertia\Inertia;
 
 // Unauthenticated Guest Routes
 Route::middleware('guest')->group(function () {
@@ -12,9 +12,10 @@ Route::middleware('guest')->group(function () {
 
 // Authenticated Session Routes
 Route::middleware('auth')->group(function () {
-    Route::get('/dashboard', function () {
-        return Inertia::render('Dashboard');
-    })->name('dashboard');
-
+    Route::get('/dashboard', [WeatherController::class, 'index'])->name('dashboard');
+    Route::post('/dashboard/city', [WeatherController::class, 'updateCity'])->name('dashboard.city');
+    Route::post('/dashboard/refresh', [WeatherController::class, 'refresh'])->name('dashboard.refresh');
     Route::post('/logout', [LoginController::class, 'destroy'])->name('logout');
 });
+
+
